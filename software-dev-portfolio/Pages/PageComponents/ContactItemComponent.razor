@@ -1,32 +1,10 @@
-﻿@* If the contact item contains an image: *@
-@if (HasImage)
-{
-    <li class="contactLI">
-
-        <a class="contact-link" target="_blank" href="@Link">
-
-            <img src="@ImagePath" alt="@ImageAlt">
-
-            @Description
-
-        </a>
-
-    </li>
-}
-
-@* If the contact item does not contain an image: *@
-else
-{
-    <li class="contactLI">
-
-        <a class="contact-link" target="_blank" href="@Link">
-
-            @Description
-
-        </a>
-
-    </li>
-}
+﻿<a class="contact-link" target="_blank" href="@Link">
+    @if (!string.IsNullOrEmpty(@ImagePath))
+    {
+        <img src="@ImagePath" alt="@ImageAlt">
+    }
+    @Description
+</a>
 
 @code {
     [Parameter]
@@ -36,7 +14,5 @@ else
     [Parameter]
     public string? ImagePath { get; set; }
     [Parameter]
-    public string? ImageAlt { get; set; }
-    [Parameter]
-    public bool HasImage { get; set; }
+    public string? ImageAlt { get; set; } = "Contact Link";
 }

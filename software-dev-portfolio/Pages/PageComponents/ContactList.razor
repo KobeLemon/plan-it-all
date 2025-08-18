@@ -1,45 +1,36 @@
 ﻿@using software_dev_portfolio.Pages.PageComponents;
 
-<ul class="contact-items-list">
-    @* This iterates through the ContactsList list & then displays all items *@
+
+<div class="contact-list">
     @foreach (var item in ContactsList)
     {
-        <ContactItemComponent Link="@item.Link" Description="@item.Description" ImagePath="@item.ImagePath"
-            ImageAlt="@item.ImageAlt" HasImage="@item.HasImage">
-        </ContactItemComponent>
+        <ContactItemComponent Link="@item.Link" Description="@item.Description" ImagePath="@item.ImagePath" ImageAlt="@item.ImageAlt"/>
     }
-    <li style="text-align:center;"><a href="/contact">Back to Top</a></li>
-</ul>
+</div>
 
 @code {
     private List<ContactItem>? ContactsList = new List<ContactItem>
     {
-    @* Email - no image*@
         new ContactItem
         {
             Link="mailto:kobealemon@gmail.com",
             Description="✉ kobealemon@gmail.com",
-            ImagePath="",
-            ImageAlt="",
-            HasImage=false
+            ImagePath=string.Empty,
+            ImageAlt=string.Empty
         },
-            @* LinkedIn *@
         new ContactItem
         {
             Link="https://www.linkedin.com/in/kobe-lemon",
-            Description="My LinkedIn Profile",
-            ImagePath="./images/linkedin-original.svg",
-            ImageAlt="LinkedIn Logo",
-            HasImage=true
+            Description="LinkedIn",
+            ImagePath="/images/linkedin-original.svg",
+            ImageAlt="LinkedIn Logo"
         },
-            @* GitHub *@
         new ContactItem
         {
             Link="https://github.com/KobeLemon",
-            Description="My GitHub Profile",
+            Description="GitHub",
             ImagePath="./images/github-original.svg",
-            ImageAlt="GitHub Logo",
-            HasImage=true
+            ImageAlt="GitHub Logo"
         },
     };
 
@@ -49,6 +40,5 @@
         public string? Description { get; set; }
         public string? ImagePath { get; set; }
         public string? ImageAlt { get; set; }
-        public bool HasImage { get; set; }
     }
 }
