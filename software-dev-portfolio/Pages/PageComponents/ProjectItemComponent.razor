@@ -2,9 +2,9 @@
     <a href="@Link">@Name</a>
     <section>
         <img class="projectImage" src="/images/@ImageLink" alt="@AltText" />
-        <p>
+        <p style="text-align: justify;">
             @Description
-            <br /><br />Technologies: @FormattedLanguages
+            <br /><br />Technologies: @FormattedTechnologies
         </p>
     </section>
 </div>
@@ -17,10 +17,10 @@
     [Parameter]
     public string? Description { get; set; }
     [Parameter]
-    public List<string>? Language { get; set; }
+    public List<string>? Technologies { get; set; }
     [Parameter]
     public string? ImageLink { get; set; }
     [Parameter]
     public string? AltText { get; set; }
-    private string? FormattedLanguages => string.Join(", ", Language);
+    private string? FormattedTechnologies => string.Join(", ", Technologies);
 }
