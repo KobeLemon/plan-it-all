@@ -11,8 +11,6 @@
 
 My name is Kobe Lemon and I am a Software Developer! This is my portfolio that shows several of my software development projects throughout my journey as a software developer. I have built this portfolio as its own project and it is built to be interactive, interesting, and descriptive.
 
-[Software Demo Video](https://www.youtube.com/watch?v=pQKzlYo6__E)
-
 ## Web Pages
 
 **Home**: The Home page gives a brief overview on who I am and how I have gotten to this point. It also explains what I am currently learning.
