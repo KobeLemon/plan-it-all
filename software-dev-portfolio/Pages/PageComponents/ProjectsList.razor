@@ -1,5 +1,5 @@
 ﻿@* Page Title *@
-<h3 class="contentTitle">My Projects @title</h3>
+<h3 class="content-title">My Projects @title</h3>
 
 @* Buttons for sorting *@
 @* <section id="sort-section">
@@ -44,7 +44,7 @@
 <hr />
 
 @* Display sorted project items *@
-<ul class="project-items-list">
+<div class="project-items-list">
 
     @* This iterates through the SortedProjectItems list & then displays all items *@
     @foreach (var item in SortedProjectItems)
@@ -58,8 +58,8 @@
             AltText="@item.AltText">
         </ProjectItemComponent>
     }
-    <li style="text-align:center;"><a href="/projects">Back to Top</a></li>
-</ul>
+    <div style="text-align:center;"><a href="/projects">Back to Top</a></div>
+</div>
 
 @code {
     // Default Title is blank
