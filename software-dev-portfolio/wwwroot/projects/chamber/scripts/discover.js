@@ -33,7 +33,7 @@ if ("IntersectionObserver" in window) {
                 }
             });
         },
-        { threshold: 1, rootMargin: "500px" }
+        { threshold: 1, rootMargin: "500px" },
     );
 
     imagesToLoad.forEach((img) => {

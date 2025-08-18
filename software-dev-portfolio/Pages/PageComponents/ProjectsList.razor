@@ -1,43 +1,35 @@
-﻿@* Page Title *@
-<h3 class="content-title">My Projects @title</h3>
+﻿<h3 class="content-title">My Projects @Title</h3>
 
-@* Buttons for sorting *@
 @* <section id="sort-section">
-
     <label class="sort-label">Filter/Sort</label>
-
     <section class="sort-btn-box">
-
         <section class="sort-btn-individual">
             <input type="radio"
                 id="default"
                 class="sort-btn"
                 value="default"
                 @onchange="SortProjects"
-                checked="@isDefault">
+                checked="@IsDefault">
             <label for="default">Default</label>
         </section>
-
         <section class="sort-btn-individual">
             <input type="radio"
-                id="nameAsc"
+                id="NameAsc"
                 class="sort-btn"
-                value="nameAsc"
+                value="NameAsc"
                 @onchange="SortProjects"
-                checked="@isNameAsc">
-            <label for="nameAsc">A-Z</label>
+                checked="@IsNameAsc">
+            <label for="NameAsc">A-Z</label>
         </section>
-
         <section class="sort-btn-individual">
             <input type="radio"
-                id="nameDesc"
+                id="NameAsc"
                 class="sort-btn"
-                value="nameDesc"
+                value="NameAsc"
                 @onchange="SortProjects"
-                checked="@isNameDesc">
-            <label for="nameDesc">Z-A</label>
+                checked="@IsNameDesc">
+            <label for="NameAsc">Z-A</label>
         </section>
-
     </section>
 </section> *@
 
@@ -63,8 +55,9 @@
 
 @code {
     // Default Title is blank
-    public string? title = string.Empty;
-    private string? currentSort = "default";
+    public string? Title = string.Empty;
+    private string? CurrentSort = "default";
+    private List<ProjectItem>? SortedProjectItems;
 
     // This is a list of the different projects that will be displayed in my portfolio
     private List<ProjectItem>? ProjectItems = new List<ProjectItem>
@@ -119,8 +112,6 @@
         },
     };
     
-    private List<ProjectItem>? SortedProjectItems;
-
     protected override void OnInitialized()
     {
         SortedProjectItems = ProjectItems;
@@ -129,17 +120,17 @@
     // This function sorts projects according to user input
     private void SortProjects(ChangeEventArgs e)
     {
-        currentSort = e.Value?.ToString();
+        CurrentSort = e.Value?.ToString();
 
-        switch (currentSort)
+        switch (CurrentSort)
         {
             // A-Z
-            case "nameAsc":
+            case "NameAsc":
                 SortedProjectItems = ProjectItems?.OrderBy(p => p.Name).ToList();
                 break;
 
             // Z-A
-            case "nameDesc":
+            case "NameDesc":
                 SortedProjectItems = ProjectItems?.OrderByDescending(p => p.Name).ToList();
                 break;
 
@@ -151,10 +142,10 @@
     }
 
     // Properties to track which sorting option is selected
-    private bool isDefault => currentSort?.ToLower() == "default";
-    private bool isNameAsc => currentSort?.ToLower() == "nameasc";
-    private bool isNameDesc => currentSort?.ToLower() == "namedesc";
-    private bool isLanguage => currentSort?.ToLower() == "language";
+    private bool IsDefault => CurrentSort?.ToLower() == "default";
+    private bool IsNameAsc => CurrentSort?.ToLower() == "nameasc";
+    private bool IsNameDesc => CurrentSort?.ToLower() == "namedesc";
+    private bool IsLanguage => CurrentSort?.ToLower() == "language";
 
     public class ProjectItem
     {
