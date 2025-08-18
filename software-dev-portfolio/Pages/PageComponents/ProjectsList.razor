@@ -2,13 +2,12 @@
 <h3 class="contentTitle">My Projects @title</h3>
 
 @* Buttons for sorting *@
-<section id="sort-section">
+@* <section id="sort-section">
 
-    <label class="sort-label">Sort by: </label>
+    <label class="sort-label">Filter/Sort</label>
 
     <section class="sort-btn-box">
 
-        @* Default *@
         <section class="sort-btn-individual">
             <input type="radio"
                 id="default"
@@ -19,7 +18,6 @@
             <label for="default">Default</label>
         </section>
 
-        @* A-Z *@
         <section class="sort-btn-individual">
             <input type="radio"
                 id="nameAsc"
@@ -30,7 +28,6 @@
             <label for="nameAsc">A-Z</label>
         </section>
 
-        @* Z-A *@
         <section class="sort-btn-individual">
             <input type="radio"
                 id="nameDesc"
@@ -42,7 +39,7 @@
         </section>
 
     </section>
-</section>
+</section> *@
 
 <hr />
 
@@ -55,7 +52,10 @@
         <ProjectItemComponent 
             Link="@item.Link"
             Description="@item.Description"
-            Name="@item.Name">
+            Language="@item.Language"
+            Name="@item.Name"
+            ImageLink="@item.ImageLink"
+            AltText="@item.AltText">
         </ProjectItemComponent>
     }
     <li style="text-align:center;"><a href="/projects">Back to Top</a></li>
@@ -63,9 +63,8 @@
 
 @code {
     // Default Title is blank
-    public string? title;
-
-    private string? currentSort;
+    public string? title = string.Empty;
+    private string? currentSort = "default";
 
     // This is a list of the different projects that will be displayed in my portfolio
     private List<ProjectItem>? ProjectItems = new List<ProjectItem>
@@ -73,38 +72,50 @@
         new ProjectItem {
             Name = "Where Am I? - Geolocator & Weather",
             Link = "https://kobelemon.github.io/geolocator-app/",
-            Description="Where Am I? - Geolocator & Weather is a website that uses the Geolocation API and the OpenWeather API to show your current location and the weather data for your current location. You can save this location data & weather data into localStorage so you can keep track of different locations and weathers. I wrote this website using HTML, CSS, and Javascript.",
-            Language = "HTML/CSS/JavaScript"
+            Description="Where Am I? - Geolocator & Weather uses the Geolocation API and the OpenWeather API to show your current location and the weather data for your current location. You can keep track of the location data & weather data by saving it into browser Local Storage. No personal data is saved/accessible elsewhere.",
+            Language = new List<string> {"HTML", "CSS", "JavaScript", "Geolocation API", "OpenWeather API, LocalStorage"},
+            ImageLink = "where_am_I_preview.png",
+            AltText = "Preview of Where Am I? - Geolocator & Weather project"
         },
         new ProjectItem {
             Name = "Star Wars API - Demo App",
             Link = "https://kobelemon.github.io/swapi-demo-app/",
-            Description="Star Wars API - Demo App is a website that uses SWAPI - The Star Wars API to find & display information about various characters, planets, etc. from the Star Wars universe. I wrote this website using HTML, CSS, and Javascript. NOTE: I am not affiliated with SWAPI - The Star Wars API or its author Paul Hallett, Disney, or Lucasfilms. I am not using this project for monetary gain. This project is soley meant to exercise and practice my coding skills. SWAPI License: https://github.com/Juriy/swapi?tab=BSD-3-Clause-1-ov-file#readme",
-            Language = "HTML/CSS/JavaScript"
+            Description="Star Wars API - Demo App uses SWAPI - The Star Wars API to display information about various characters, planets, etc. from the Star Wars universe. NOTE: I am not affiliated with SWAPI - The Star Wars API or its author Paul Hallett, Disney, or Lucasfilms. I am not using this project for monetary gain. This project is soley meant to exercise and practice my coding skills. SWAPI License: https://github.com/Juriy/swapi?tab=BSD-3-Clause-1-ov-file#readme",
+            Language = new List<string> {"HTML", "CSS", "JavaScript", "SWAPI - The Star Wars API"},
+            ImageLink = "swapi_preview.png",
+            AltText = "Preview of Star Wars API - Demo App"
         },
         new ProjectItem {
             Name = "Bountiful Foods - Mock Website",
             Link = "/projects/bountiful-foods/index.html",
-            Description="Bountiful Foods. I wrote this website using HTML, CSS, and Javascript. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae iste quasi, maiores porro esse fuga perferendis nemo quam, perferendis minus quidem, odit animi soluta dolorem excepturi adipisci tenetur optio aut perspiciatis numquam! Voluptates nostrum voluptatum tenetur corrupti delectus, natus obcaecati modi, velit enim, iure perspiciatis. Animi tempora beatae esse, aut debitis adipisci excepturi placeat repellat non obcaecati? Doloremque perferendis aliquam sit sapiente ratione a voluptas illo, nisi eligendi quos quaerat error veritatis expedita quis consequuntur.",
-            Language = "HTML/CSS/JavaScript"
+            Description="Bountiful Foods is a mock website I created while at BYU-Idaho. Interactive & designed to be a farmer's market website, showing the vision and directive with a clean UI. It uses the OpenWeather API to get accurate weather data for Carlsbad, CA.",
+            Language = new List<string> {"HTML", "CSS", "JavaScript", "OpenWeather API"},
+            ImageLink = "bountiful_foods_preview.png",
+            AltText = "Preview of Bountiful Foods - Mock Website"
         },
         new ProjectItem {
             Name = "Chamber of Commerce - Mock Website",
             Link = "/projects/chamber/index.html",
-            Description="Chamber of Commerce. I wrote this website using HTML, CSS, and Javascript. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae iste quasi, maiores porro esse fuga perferendis nemo quam, perferendis minus quidem, odit animi soluta dolorem excepturi adipisci tenetur optio aut perspiciatis numquam! Voluptates nostrum voluptatum tenetur corrupti delectus, natus obcaecati modi, velit enim, iure perspiciatis. Animi tempora beatae esse, aut debitis adipisci excepturi placeat repellat non obcaecati? Doloremque perferendis aliquam sit sapiente ratione a voluptas illo, nisi eligendi quos quaerat error veritatis expedita quis consequuntur.",
-            Language = "HTML/CSS/JavaScript"
+            Description="This is a mock Chamber of Commerce website I created while at BYU-Idaho, it is a mock platform where citizens can collaborate together, advertise their businesses, see information about events and local, and see the local news. It has an organized business directory and uses smart form logic to register mock users/businesses.",
+            Language = new List<string> {"HTML", "CSS", "JavaScript", "OpenWeather API"},
+            ImageLink = "chamber_preview.png",
+            AltText = "Preview of Chamber of Commerce - Mock Website"
         },
         new ProjectItem {
             Name = "Custom List Maker",
             Link = "/projects/list-maker/index.html",
-            Description="Custom List Maker. I wrote this website using HTML, CSS, and Javascript. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae iste quasi, maiores porro esse fuga perferendis nemo quam, perferendis minus quidem, odit animi soluta dolorem excepturi adipisci tenetur optio aut perspiciatis numquam! Voluptates nostrum voluptatum tenetur corrupti delectus, natus obcaecati modi, velit enim, iure perspiciatis. Animi tempora beatae esse, aut debitis adipisci excepturi placeat repellat non obcaecati? Doloremque perferendis aliquam sit sapiente ratione a voluptas illo, nisi eligendi quos quaerat error veritatis expedita quis consequuntur.",
-            Language = "HTML/CSS/JavaScript"
+            Description="This is a simple custom list maker for things like a to-do list, shopping list, reminders, etc. Hosted as a live website, so you can make a list anywhere anytime!",
+            Language = new List<string> {"HTML", "CSS", "JavaScript"},
+            ImageLink = "custom_list_maker_preview.png",
+            AltText = "Preview of Custom List Maker"
         },
         new ProjectItem {
             Name = "CSS Keyframes Presentation",
             Link = "/projects/keyframes-presentation/index.html",
-            Description="CSS Keyframes Presentation. I wrote this website using HTML, CSS, and Javascript. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae iste quasi, maiores porro esse fuga perferendis nemo quam, perferendis minus quidem, odit animi soluta dolorem excepturi adipisci tenetur optio aut perspiciatis numquam! Voluptates nostrum voluptatum tenetur corrupti delectus, natus obcaecati modi, velit enim, iure perspiciatis. Animi tempora beatae esse, aut debitis adipisci excepturi placeat repellat non obcaecati? Doloremque perferendis aliquam sit sapiente ratione a voluptas illo, nisi eligendi quos quaerat error veritatis expedita quis consequuntur.",
-            Language = "HTML/CSS/JavaScript"
+            Description="This is a CSS Keyframes Presentation I created while at BYU-Idaho. It illustrates and displays the many things you can do with CSS and its Keyframes system. JavaScript is used for the button event listeners, but the keyframe animations are purely CSS.",
+            Language = new List<string> {"HTML", "CSS", "JavaScript"},
+            ImageLink = "keyframes_presentation_preview.png",
+            AltText = "Preview of CSS Keyframes Presentation"
         },
     };
     
@@ -113,7 +124,6 @@
     protected override void OnInitialized()
     {
         SortedProjectItems = ProjectItems;
-        currentSort = "default"; // Default sorting
     }
 
     // This function sorts projects according to user input
@@ -149,11 +159,10 @@
     public class ProjectItem
     {
         public string? Name { get; set; }
-
         public string? Link { get; set; }
-
         public string? Description { get; set; }
-
-        public string? Language { get; set; }
+        public List<string>? Language { get; set; }
+        public string? ImageLink { get; set; }
+        public string? AltText { get; set; }
     }
 }

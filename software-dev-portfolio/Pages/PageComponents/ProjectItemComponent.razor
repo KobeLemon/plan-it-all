@@ -6,9 +6,12 @@
 
     <section>
 
-        <iframe src="@Link"></iframe>
+        <img class="projectImage" src="/images/@ImageLink" alt="@AltText" />
 
-        <p>@Description</p>
+        <p>
+            @Description 
+            <br/><br/>Technologies: @FormattedLanguages
+        </p>
 
     </section>
 
@@ -17,7 +20,6 @@
 </li>
 
 @code {
-
     [Parameter]
     public string? Name { get; set; }
     [Parameter]
@@ -25,5 +27,10 @@
     [Parameter]
     public string? Description { get; set; }
     [Parameter]
-    public string? Language { get; set; }
+    public List<string>? Language { get; set; }
+    [Parameter]
+    public string? ImageLink { get; set; }
+    [Parameter]
+    public string? AltText { get; set; }
+    private string? FormattedLanguages => string.Join(", ", Language);
 }
